@@ -1,6 +1,7 @@
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+import json
 from .models import BooK
 import datetime
 
@@ -30,5 +31,4 @@ def changeBookinfo(request,book_id):
   if request.method=='POST':
       temp_name=request.POST['name']
       BooK.objects.filter(id=book_id).update(name=temp_name)
-  return HttpResponseRedirect(reverse('polls:detail'))
-    
+      return HttpResponseRedirect(reverse('polls:detail'))
